@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <RollForward>Major</RollForward>
+        <PublishReadyToRun>false</PublishReadyToRun>
+        <TieredCompilation>false</TieredCompilation>
+    </PropertyGroup>
+    <PropertyGroup>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <ApplicationIcon>Icon.ico</ApplicationIcon>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Remove="Icon.ico" />
+        <None Remove="Icon.bmp" />
+        <None Remove="Content\Downloads\**" />
+        <None Remove="bin\**" />
+        <None Remove="Content\bin\**" />
+        <None Remove="Content\galleryFont.spritefont" />
+        <None Remove="Content\gallary.spritefont" />
+        <None Remove="Content\File.spritefont" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="Icon.ico" />
+        <EmbeddedResource Include="Icon.bmp" />
+        <EmbeddedResource Remove="Content\Downloads\**" />
+        <EmbeddedResource Remove="bin\**" />
+        <EmbeddedResource Remove="Content\bin\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
+        <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="Content\Downloads\**" />
+      <Compile Remove="bin\**" />
+      <Compile Remove="Content\bin\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="bin\Debug\net6.0\hausaufgabe1" />
+      <Content Include="bin\Debug\net6.0\hausaufgabe1.deps.json" />
+      <Content Include="bin\Debug\net6.0\hausaufgabe1.dll" />
+      <Content Include="bin\Debug\net6.0\hausaufgabe1.pdb" />
+      <Content Include="bin\Debug\net6.0\hausaufgabe1.runtimeconfig.json" />
+      <Content Include="bin\Debug\net6.0\MonoGame.Framework.dll" />
+      <Content Include="bin\Debug\net6.0\runtimes\linux-x64\native\libopenal.so.1" />
+      <Content Include="bin\Debug\net6.0\runtimes\linux-x64\native\libSDL2-2.0.so.0" />
+      <Content Include="bin\Debug\net6.0\runtimes\osx\native\libopenal.1.dylib" />
+      <Content Include="bin\Debug\net6.0\runtimes\osx\native\libSDL2.dylib" />
+      <Content Include="bin\Debug\net6.0\runtimes\win-x64\native\SDL2.dll" />
+      <Content Include="bin\Debug\net6.0\runtimes\win-x64\native\soft_oal.dll" />
+      <Content Include="bin\Debug\net6.0\runtimes\win-x86\native\SDL2.dll" />
+      <Content Include="bin\Debug\net6.0\runtimes\win-x86\native\soft_oal.dll" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="bin\Debug\net6.0\Content" />
+    </ItemGroup>
+    <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
+        <Message Text="Restoring dotnet tools" Importance="High" />
+        <Exec Command="dotnet tool restore" />
+    </Target>
+</Project>
